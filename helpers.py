@@ -35,8 +35,9 @@ def register_new_courier_and_return_login_password():
         login_pass.append(login)
         login_pass.append(password)
         login_pass.append(first_name)
+        login_pass.append(response.status_code)
+        login_pass.append(response.json())
 
     # возвращаем список
     return login_pass
 
-#print(register_new_courier_and_return_login_password())
