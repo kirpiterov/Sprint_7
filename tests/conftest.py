@@ -38,7 +38,7 @@ def create_order_fixture(order):
     body = DataForOrder.CREATE_ORDER_BODY
     new_order = order.create_order(body)
     track = new_order.json()['track']
-    #print(new_order)
+
     yield new_order
     #отмена заказа по track
     order.cancel_order(track)
@@ -50,7 +50,7 @@ def create_order_fixture_param_colors(order, request):
     body['color'] = request.param
     new_order = order.create_order(body)
     track = new_order.json()['track']
-    #print(new_order)
+
     yield new_order
     #отмена заказа по track
     order.cancel_order(track)

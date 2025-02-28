@@ -29,12 +29,9 @@ class TestCreateCourier:
         with allure.step(f'Пытаемся создать курьера с реквизитами: {payload}'):
             assert Courier.create_courier(payload).status_code == 400 and Courier.create_courier(payload).json()['message'] == "Недостаточно данных для создания учетной записи"
 
-    @allure.title('Тест правильного кода ответа')
+    @allure.title('Тест правильного кода и тела ответа')
     def test_create_courier__success_code_201(self, valid_courier_register):
         assert valid_courier_register.status_code == 201
-
-    @allure.title('Тест правильного тела ответа')
-    def test_create_courier_responce_body__success(self, valid_courier_register):
         assert valid_courier_register.json() == {'ok': True}
 
     @allure.title('Тест возврата ошибки при отсутствии обязательного параметра для создания курьера')
